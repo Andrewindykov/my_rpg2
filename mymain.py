@@ -19,7 +19,7 @@ class Main():
     def main_loop(self):
         while self.running == True:
             self.render()
-
+# проверка связи
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 game = Main(screen)
