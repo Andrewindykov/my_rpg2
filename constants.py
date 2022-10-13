@@ -5,6 +5,7 @@ RIGHT = 0
 DOWN = 1
 LEFT = 2
 UP = 3
+DIE = 4
 
 ALIVE = 0
 DEAD = 2
