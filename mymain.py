@@ -4,7 +4,7 @@ from constants import *
 class Main():
     def __init__(self, screen):
         self.screen = screen
-        self.bsckground = pygame.image.load(data/background.jpg)
+        self.background = pygame.image.load('data/background.jpg')
         self.running = True
         self.main_loop()
 
@@ -13,7 +13,7 @@ class Main():
 
     def render(self):
 
-        self.screen.blit(self.bsckground(0,0))
+        self.screen.blit(self.background,(0,0))
         pygame.display.flip()
 
     def main_loop(self):
@@ -22,4 +22,5 @@ class Main():
 # проверка связи
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 game = Main(screen)
