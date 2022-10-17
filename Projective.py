@@ -2,8 +2,9 @@ import pygame
 from constants import *
 
 class Projective():
-    def __init__(self,  dir, image_pack):
-
+    def __init__(self,  x_start, y_start, dir, image_pack):
+        self.x = x_start
+        self.y = y_start
         self.direction = dir
         self.image = pygame.image.load(image_pack).convert_alpha()
         self.images = []
@@ -30,12 +31,19 @@ class Projective():
 
 
 class Arrow(Projective):
-    def __init__(self, x_start, y_start, dir):
-        self.x = x_start
-        self.y = y_start
+    def __init__(self,  x_start, y_start, dir):
         self.image = 'data/arrows.png'
         self.speed = 16
-        Projective.__init__(self, dir, self.image)
+        Projective.__init__(self, x_start, y_start, dir, self.image)
+
+    def __str__(self):
+        Projective.__str__(self)
+
+class Firearrow(Projective):
+    def __init__(self, x_start, y_start, dir):
+        self.image = 'data/firearrows.png'
+        self.speed = 5
+        Projective.__init__(self, x_start, y_start, dir, self.image)
 
     def __str__(self):
         Projective.__str__(self)
