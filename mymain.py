@@ -58,6 +58,22 @@ class Main():
                         else:
                             self.projective.append(Arrow(self.player.x, self.player.y-12, self.player.direction))
 
+                if event.key == K_x:
+                    if self.player.mp >= SKILL2_COST and self.player.state != SHOOT and self.player.state != DEAD:
+                        self.player.mp -= SKILL2_COST
+                        self.player.state = SHOOT
+                        self.player.spell_casted = pygame.time.get_ticks()
+
+                        self.projective.append(Firearrow(self.player.x , self.player.y, self.player.direction))
+                      #  if self.player.direction == RIGHT:
+                     #       self.projective.append(Firearrow(self.player.x+12, self.player.y, self.player.direction))
+                      #  elif self.player.direction == DOWN:
+                      #      self.projective.append(Firearrow(self.player.x, self.player.y+12, self.player.direction))
+                      #  elif self.player.direction == LEFT:
+                      #      self.projective.append(Firearrow(self.player.x-12, self.player.y, self.player.direction))
+                      #  else:
+                      #      self.projective.append(Firearrow(self.player.x, self.player.y-12, self.player.direction))
+
 
 
 
@@ -80,6 +96,10 @@ class Main():
         for i in self.projective:
             i.render(screen)
         pygame.display.flip()
+
+   # def clear_garbage(self):
+   #     for i in self.projective:
+    #        if i.x > SCREEN_WIDTH or i.x < -32 or
 
     def main_loop(self):
         while self.running == True:
