@@ -26,12 +26,17 @@ class Main():
             elif event.type == KEYDOWN:
                 if event.key == K_RIGHT:
                     self.player.mooving = [1,0,0,0]
+                    self.player.walk = True
                 if event.key == K_DOWN:
-                     self.player.mooving = [0,1,0,0]
+                    self.player.mooving = [0,1,0,0]
+                    self.player.walk = True
                 if event.key == K_LEFT:
-                       self.player.mooving = [0,0,1,0]
+                    self.player.mooving = [0,0,1,0]
+                    self.player.walk = True
                 if event.key == K_UP:
                     self.player.mooving = [0,0,0,1]
+                    self.player.walk = True
+
 
                 if event.key == K_SPACE:
                     self.player.hp-=5
@@ -80,12 +85,16 @@ class Main():
             elif event.type == KEYUP:
                 if event.key == K_RIGHT:
                     self.player.mooving[RIGHT] = 0
+                    self.player.walk = False
                 if event.key == K_DOWN:
                     self.player.mooving[DOWN] = 0
+                    self.player.walk = False
                 if event.key == K_LEFT:
                     self.player.mooving[LEFT] = 0
+                    self.player.walk = False
                 if event.key == K_UP:
                     self.player.mooving[UP] = 0
+                    self.player.walk = False
 
 
     def render(self):

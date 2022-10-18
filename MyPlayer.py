@@ -12,6 +12,8 @@ class Player():
         self.name = name
         self.hp = MAX_HP
         self.mp = MAX_MP
+        self.frame = 0
+        self.walk = False
         self.spell_casted = 0
         self.mooving = [0, 0, 0, 0]
         #self.image_pack = ['data/archerr.png','data/archerd.png','data/archerl.png','data/archeru.png']
@@ -38,7 +40,10 @@ class Player():
         i.append(temp.subsurface(60, 0, 60, 88))  # умер
         self.image = i
 
-
+        i = []
+        for j in range(8):
+            i.append(temp.subsurface(j * 60, 186, 60, 88))
+        self.right_images = i
 
 
 
@@ -63,8 +68,16 @@ class Player():
 
 
     def render(self, screen):
+        # Animating
+        if self.walk:
+            self.frame += 0.3
+            if int(self.frame) == 8:
+                self.frame = 0
+            if self.direction == RIGHT:
+                self.image[self.direction] = self.right_images[int(self.frame)]
        # screen.blit(self.images[self.direction][self.state], (self.x, self.y))
-       screen.blit(self.image[self.direction], (self.x, self.y))
+
+        screen.blit(self.image[self.direction], (self.x, self.y))
     def render_ui(self, screen):
         screen.blit(self.hpframe, (self.x-4, self.y-5))
         m = 1
